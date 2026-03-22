@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* High-Contrast Nordic Cyber Palette */
+  --color-brand-50: #f0f9ff;
+  --color-brand-100: #e0f2fe;
+  --color-brand-200: #bae6fd;
+  --color-brand-300: #7dd3fc;
+  --color-brand-400: #38bdf8;
+  --color-brand-500: #0ea5e9;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-800: #1e40af;
+  --color-brand-900: #1e3a8a;
+  --color-brand-950: #172554;
+
+  --color-slate-950: #020617;
+  --color-slate-900: #0f172a;
+  --color-slate-800: #1e293b;
+  --color-slate-700: #334155;
+
+  /* Vivid Status Colors */
+  --color-severity-critical: #ff4d4d;
+  --color-severity-serious: #ff944d;
+  --color-severity-moderate: #ffdb4d;
+  --color-severity-minor: #4d94ff;
+
+  --color-confidence-high: #34d399;
+  --color-confidence-medium: #fbbf24;
+  --color-confidence-low: #f87171;
+
+  --font-sans: 'Roboto Mono', 'Inter', monospace;
+  --font-mono: 'Roboto Mono', monospace;
+  --font-display: 'Roboto Mono', 'Inter', monospace;
+}
+
+@layer base {
+  html,
+  body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    color: #f1f5f9;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    /* Clean Deep Ocean Background */
+    background: 
+      radial-gradient(circle at 50% -20%, rgba(14, 165, 233, 0.1), transparent 70%),
+      #020617;
+    background-attachment: fixed;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(30, 58, 138, 0.2) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30, 58, 138, 0.2) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -1;
+  }
+}
+
+@utility glass-card {
+  border-radius: 20px;
+  border-width: 1px;
+  border-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+@utility cyber-hex {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+@utility cyber-clip-tr {
+  clip-path: polygon(0 0, 80% 0, 100% 20%, 100% 100%, 0 100%);
+}
+
+@utility cyber-clip-bl {
+  clip-path: polygon(0 20%, 20% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+@keyframes scanner {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+.scanner-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-brand-400), transparent);
+  animation: scanner 4s linear infinite;
+  pointer-events: none;
+}
+
+@utility btn-vibrant {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 12px;
+  background-color: var(--color-brand-500);
+  background-image: linear-gradient(to bottom right, var(--color-brand-400), var(--color-brand-600));
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 4px 14px 0 rgba(6, 182, 212, 0.39);
+  transition-property: all;
+  transition-duration: 200ms;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.23);
+    background-color: var(--color-brand-400);
+  }
+}
+
+.container-custom {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-custom {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.glow-brand {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, white, var(--color-brand-200));
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
