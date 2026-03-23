@@ -23,6 +23,12 @@ export function useAuditDetails(auditId: string | null) {
     queryKey: queryKeys.audit(auditId || ''),
     queryFn: () => auditService.getAuditResults(auditId!),
     enabled: !!auditId,
+    refetchInterval: (query) => {
+      if (query.state.data) return false; 
+      return 3000;
+    },
+    retry: true,
+    refetchOnWindowFocus: true,
   });
 }
 

@@ -16,17 +16,17 @@ export function CoverageComparator({ summary }: CoverageComparatorProps) {
   };
 
   const data = [
-    { 
-      label: 'Deterministic (Axe)', 
-      value: comparator.axe_only_found, 
-      color: 'bg-indigo-500', 
+    {
+      label: 'Deterministic (Axe)',
+      value: comparator.axe_only_found,
+      color: 'bg-indigo-500',
       icon: <ShieldCheck size={16} />,
       desc: 'Standard WCAG rules and best practices'
     },
-    { 
-      label: 'Advanced & AI', 
-      value: comparator.advanced_found, 
-      color: 'bg-brand-500', 
+    {
+      label: 'Advanced & AI',
+      value: comparator.advanced_found,
+      color: 'bg-brand-500',
       icon: <Zap size={16} />,
       desc: 'Heuristic, structural and visual analysis'
     }
@@ -44,7 +44,7 @@ export function CoverageComparator({ summary }: CoverageComparatorProps) {
       <div className="space-y-12">
         {data.map((item, index) => {
           const percentage = total > 0 ? (item.value / total) * 100 : 0;
-          
+
           return (
             <div key={item.label} className="relative">
               <div className="flex justify-between items-end mb-4">
@@ -60,7 +60,7 @@ export function CoverageComparator({ summary }: CoverageComparatorProps) {
                   <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Detections</div>
                 </div>
               </div>
-              
+
               <div className="h-3 w-full bg-slate-900 rounded-full overflow-hidden border border-white/5">
                 <motion.div
                   initial={{ width: 0 }}

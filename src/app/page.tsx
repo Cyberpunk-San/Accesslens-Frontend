@@ -70,27 +70,27 @@ export default function HomePage() {
     <main className="min-h-screen relative overflow-hidden bg-[#020617] text-white">
       <InteractiveGrid />
       <MatrixRain />
-      
+
       {/* Background HUD Decor */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-20">
-         <div className="absolute top-40 left-10 w-40 h-px bg-gradient-to-r from-brand-500/0 via-brand-500/40 to-brand-500/0"></div>
-         <div className="absolute top-40 left-10 w-px h-40 bg-gradient-to-b from-brand-500/0 via-brand-500/40 to-brand-500/0"></div>
-         
-         <div className="absolute bottom-40 right-10 w-40 h-px bg-gradient-to-r from-brand-500/0 via-brand-500/40 to-brand-500/0"></div>
-         <div className="absolute bottom-40 right-10 w-px h-40 bg-gradient-to-b from-brand-500/0 via-brand-500/40 to-brand-500/0"></div>
+        <div className="absolute top-40 left-10 w-40 h-px bg-gradient-to-r from-brand-500/0 via-brand-500/40 to-brand-500/0"></div>
+        <div className="absolute top-40 left-10 w-px h-40 bg-gradient-to-b from-brand-500/0 via-brand-500/40 to-brand-500/0"></div>
 
-         {isMounted && hexCodes.map((hex, i) => (
-           <motion.div
-             key={i}
-             initial={{ opacity: 0 }}
-             animate={{ opacity: [0.05, 0.1, 0.05], y: [-20, 20] }}
-             transition={{ duration: 8 + i * 2, repeat: Infinity, ease: "linear" }}
-             className="absolute text-[9px] font-mono text-brand-500 tracking-[0.3em] font-black"
-             style={{ top: `${20 + i * 15}%`, right: `${5 + (i * 12) % 30}%` }}
-           >
-             0x{hex} // INTEL_SYSTEM_V{i}.0
-           </motion.div>
-         ))}
+        <div className="absolute bottom-40 right-10 w-40 h-px bg-gradient-to-r from-brand-500/0 via-brand-500/40 to-brand-500/0"></div>
+        <div className="absolute bottom-40 right-10 w-px h-40 bg-gradient-to-b from-brand-500/0 via-brand-500/40 to-brand-500/0"></div>
+
+        {isMounted && hexCodes.map((hex, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0.05, 0.1, 0.05], y: [-20, 20] }}
+            transition={{ duration: 8 + i * 2, repeat: Infinity, ease: "linear" }}
+            className="absolute text-[9px] font-mono text-brand-500 tracking-[0.3em] font-black"
+            style={{ top: `${20 + i * 15}%`, right: `${5 + (i * 12) % 30}%` }}
+          >
+            0x{hex} // INTEL_SYSTEM_V{i}.0
+          </motion.div>
+        ))}
       </div>
 
       {/* Navigation Header */}
@@ -123,7 +123,7 @@ export default function HomePage() {
       <section className="relative z-10 pt-44 pb-24">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-6xl md:text-8xl font-mono font-black tracking-tighter leading-[0.9] mb-8 uppercase"
@@ -131,7 +131,7 @@ export default function HomePage() {
               Master Your <span className="text-brand-500">Accessibility.</span>
             </motion.h1>
             <p className="text-slate-400 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
-              Scan any URL in seconds. We identify hidden accessibility barriers and provide the AI-powered code you need to fix them. [SECURE_SCAN_ACTIVE]
+              Scan any URL in seconds. Identify hidden accessibility barriers and get the AI-powered code needed to fix them. [SECURE_SCAN_ACTIVE]
             </p>
           </div>
 
@@ -141,10 +141,10 @@ export default function HomePage() {
             className="max-w-4xl mx-auto relative group"
           >
             <div className="absolute -inset-10 bg-brand-500/10 blur-[100px] rounded-full -z-10 group-hover:bg-brand-500/20 transition-all duration-1000"></div>
-            <AuditForm 
-              url={url} 
-              setUrl={setUrl} 
-              onStartAudit={handleStartAudit} 
+            <AuditForm
+              url={url}
+              setUrl={setUrl}
+              onStartAudit={handleStartAudit}
               isLoading={startAudit.isPending}
               engines={engines || []}
             />
@@ -156,27 +156,27 @@ export default function HomePage() {
       <section id="how-it-works" className="relative z-10 pt-24 pb-40">
         <div className="container-custom">
           <div className="text-center mb-20 space-y-4">
-             <h2 className="text-2xl font-mono font-black uppercase tracking-[0.3em] text-brand-500">// The AccessLens Protocol</h2>
-             <div className="h-1 w-20 bg-brand-500/20 mx-auto"></div>
+            <h2 className="text-2xl font-mono font-black uppercase tracking-[0.3em] text-brand-500">// The AccessLens Protocol</h2>
+            <div className="h-1 w-20 bg-brand-500/20 mx-auto"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <StepCard 
-              num="01" 
-              icon={<Search />} 
-              title="Deep Search Scan" 
-              description="Our multi-engine intelligence (Axe, Contrast, Structural) audits every node of your rendered website."
+            <StepCard
+              num="01"
+              icon={<Search />}
+              title="Deep Search Scan"
+              description="Multi-engine intelligence (Axe, Contrast, Structural) audits every node of the rendered website."
             />
-            <StepCard 
-              num="02" 
-              icon={<Activity />} 
-              title="Identify Barriers" 
-              description="We pinpoint exactly where users are blocked, from broken Aria flow to mathematical contrast failures."
+            <StepCard
+              num="02"
+              icon={<Activity />}
+              title="Identify Barriers"
+              description="Pinpoint exactly where users are blocked, from broken Aria flow to mathematical contrast failures."
             />
-            <StepCard 
-              num="03" 
-              icon={<Code2 />} 
-              title="Deploy Fixes" 
+            <StepCard
+              num="03"
+              icon={<Code2 />}
+              title="Deploy Fixes"
               description="Get AI-synthesized code patches. Just copy and paste to evolve your architectural accessibility."
             />
           </div>
@@ -195,16 +195,16 @@ export default function HomePage() {
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-8">
                 <div className="space-y-4">
-                   <h4 className="text-white font-bold text-lg">Markup Validation isn't enough.</h4>
-                   <p className="text-slate-400 text-sm leading-relaxed font-medium">
-                     Most tools flag missing attributes. AccessLens analyzes the rendered accessibility tree, validates structural flow, and evaluate contextual clarity.
-                   </p>
+                  <h4 className="text-white font-bold text-lg">Markup Validation isn't enough.</h4>
+                  <p className="text-slate-400 text-sm leading-relaxed font-medium">
+                    Most tools flag missing attributes. AccessLens analyzes the rendered accessibility tree, validates structural flow, and evaluate contextual clarity.
+                  </p>
                 </div>
                 <div className="space-y-4">
-                   <h4 className="text-white font-bold text-lg">Goal: Explainable Reasoning.</h4>
-                   <p className="text-slate-400 text-sm leading-relaxed font-medium">
-                     We don't replace humans with automation. We provide AI-assisted, confidence-aware logic so you can build inclusive digital architectures with oversight.
-                   </p>
+                  <h4 className="text-white font-bold text-lg">Goal: Explainable Reasoning.</h4>
+                  <p className="text-slate-400 text-sm leading-relaxed font-medium">
+                    AccessLens doesn't replace humans with automation. It provides AI-assisted, confidence-aware logic so inclusive digital architectures can be built with oversight.
+                  </p>
                 </div>
               </div>
             </div>
@@ -214,17 +214,17 @@ export default function HomePage() {
 
       {/* Footer / Meta Status */}
       <footer className="relative z-10 pb-20 pt-40 container-custom">
-         <div className="flex flex-col md:flex-row justify-between items-center gap-10">
-           <div className="flex items-center gap-2 opacity-30">
-             <div className="w-6 h-6 rounded overflow-hidden">
-               <Image src={logo} alt="AccessLens Logo" className="w-full h-full object-contain grayscale" />
-             </div>
-             <span className="text-sm font-black tracking-widest uppercase">ACCESSLENS Protocol</span>
-           </div>
-           <p className="text-[11px] font-bold text-slate-600 uppercase tracking-[0.2em] font-mono">
-             Status: Intel-Active // v2.0.4 - Builder Optimized
-           </p>
-         </div>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-10">
+          <div className="flex items-center gap-2 opacity-30">
+            <div className="w-6 h-6 rounded overflow-hidden">
+              <Image src={logo} alt="AccessLens Logo" className="w-full h-full object-contain grayscale" />
+            </div>
+            <span className="text-sm font-black tracking-widest uppercase">ACCESSLENS Protocol</span>
+          </div>
+          <p className="text-[11px] font-bold text-slate-600 uppercase tracking-[0.2em] font-mono">
+            Status: Intel-Active // v2.0.4 - Builder Optimized
+          </p>
+        </div>
       </footer>
     </main>
   )

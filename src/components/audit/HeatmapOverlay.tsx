@@ -93,20 +93,20 @@ export function HeatmapOverlay({ issues, screenshot, viewportWidth = 1280 }: Hea
           <div className="h-8 w-px bg-white/5 mx-2" />
 
           <div className="flex bg-slate-950 p-1 rounded-xl border border-white/5">
-             <button 
-               onClick={() => setMode('cluster')}
-               className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${mode === 'cluster' ? 'bg-brand-500 text-white shadow-glow-sm' : 'text-slate-500 hover:text-slate-300'}`}
-             >
-               <ScatterChart size={12} />
-               Clustered
-             </button>
-             <button 
-               onClick={() => setMode('heatmap')}
-               className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${mode === 'heatmap' ? 'bg-brand-500 text-white shadow-glow-sm' : 'text-slate-500 hover:text-slate-300'}`}
-             >
-               <Flame size={12} />
-               Heatmap
-             </button>
+            <button
+              onClick={() => setMode('cluster')}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${mode === 'cluster' ? 'bg-brand-500 text-white shadow-glow-sm' : 'text-slate-500 hover:text-slate-300'}`}
+            >
+              <ScatterChart size={12} />
+              Clustered
+            </button>
+            <button
+              onClick={() => setMode('heatmap')}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${mode === 'heatmap' ? 'bg-brand-500 text-white shadow-glow-sm' : 'text-slate-500 hover:text-slate-300'}`}
+            >
+              <Flame size={12} />
+              Heatmap
+            </button>
           </div>
         </div>
 
@@ -122,9 +122,9 @@ export function HeatmapOverlay({ issues, screenshot, viewportWidth = 1280 }: Hea
         <div className="relative mx-auto" style={{ width: '100%', maxWidth: '1280px' }}>
           {screenshot && (
             <div className="relative">
-              <img 
-                src={`data:image/jpeg;base64,${screenshot}`} 
-                alt="Page Scan" 
+              <img
+                src={`data:image/jpeg;base64,${screenshot}`}
+                alt="Page Scan"
                 className={`w-full h-auto transition-all duration-700 ${mode === 'heatmap' ? 'opacity-20 grayscale brightness-50' : 'opacity-30 brightness-[0.4] contrast-125 group-hover/map:opacity-50 group-hover/map:brightness-[0.6]'}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/40 pointer-events-none" />
@@ -134,7 +134,7 @@ export function HeatmapOverlay({ issues, screenshot, viewportWidth = 1280 }: Hea
           {/* Heatmap Layer */}
           <AnimatePresence>
             {mode === 'heatmap' && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -150,7 +150,7 @@ export function HeatmapOverlay({ issues, screenshot, viewportWidth = 1280 }: Hea
                   }[issue.severity];
 
                   return (
-                    <div 
+                    <div
                       key={`heat-${idx}`}
                       className="absolute rounded-full blur-[40px]"
                       style={{
@@ -178,10 +178,10 @@ export function HeatmapOverlay({ issues, screenshot, viewportWidth = 1280 }: Hea
             }[cluster.severity];
 
             const ringColor = {
-               critical: 'ring-rose-500/40 border-rose-400/50',
-               serious: 'ring-orange-500/40 border-orange-400/50',
-               moderate: 'ring-amber-500/40 border-amber-400/50',
-               minor: 'ring-blue-500/40 border-blue-400/50'
+              critical: 'ring-rose-500/40 border-rose-400/50',
+              serious: 'ring-orange-500/40 border-orange-400/50',
+              moderate: 'ring-amber-500/40 border-amber-400/50',
+              minor: 'ring-blue-500/40 border-blue-400/50'
             }[cluster.severity];
 
             return (
@@ -190,21 +190,21 @@ export function HeatmapOverlay({ issues, screenshot, viewportWidth = 1280 }: Hea
                 className="absolute z-10"
                 style={{
                   left: `${(cluster.x / viewportWidth) * 100}%`,
-                  top: `${cluster.y}px`, 
+                  top: `${cluster.y}px`,
                   transform: 'translate(-50%, -50%)'
                 }}
               >
                 <div className="relative">
-                   {/* Ping Animation for Large Clusters */}
-                   {cluster.issues.length > 3 && (
-                     <motion.div 
-                       animate={{ scale: [1, 2.5], opacity: [0.3, 0] }}
-                       transition={{ duration: 1.5, repeat: Infinity }}
-                       className={`absolute inset-0 rounded-full ${severityColor}`}
-                     />
-                   )}
-                   
-                   <motion.div
+                  {/* Ping Animation for Large Clusters */}
+                  {cluster.issues.length > 3 && (
+                    <motion.div
+                      animate={{ scale: [1, 2.5], opacity: [0.3, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                      className={`absolute inset-0 rounded-full ${severityColor}`}
+                    />
+                  )}
+
+                  <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     whileHover={{ scale: 1.2, zIndex: 100 }}
@@ -235,44 +235,48 @@ export function HeatmapOverlay({ issues, screenshot, viewportWidth = 1280 }: Hea
                 exit={{ opacity: 0 }}
                 className="absolute inset-0 pointer-events-none z-0"
               >
-                 <div 
-                   className="absolute border-l border-brand-500/30 h-full" 
-                   style={{ left: `${(hoveredCluster.x / viewportWidth) * 100}%` }} 
-                 />
-                 <div 
-                   className="absolute border-t border-brand-500/30 w-full" 
-                   style={{ top: `${hoveredCluster.y}px` }} 
-                 />
+                <div
+                  className="absolute border-l border-brand-500/30 h-full"
+                  style={{ left: `${(hoveredCluster.x / viewportWidth) * 100}%` }}
+                />
+                <div
+                  className="absolute border-t border-brand-500/30 w-full"
+                  style={{ top: `${hoveredCluster.y}px` }}
+                />
               </motion.div>
             )}
           </AnimatePresence>
 
-          {/* Enhanced Hover Portal */}
+          {/* Enhanced Hover Portal - Positioned beside the point */}
           <AnimatePresence mode="wait">
             {hoveredCluster && (
               <motion.div
-                initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 30, scale: 0.95 }}
-                className="fixed bottom-12 left-1/2 -translate-x-1/2 z-[200] w-[450px] glass-card p-1 pb-1 shadow-[0_0_60px_rgba(0,0,0,0.8)] overflow-hidden"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                className="absolute z-[200] w-[380px] glass-card p-1 pb-1 shadow-[0_0_60px_rgba(0,0,0,0.8)] overflow-hidden pointer-events-none"
+                style={{
+                  left: (hoveredCluster.x / viewportWidth) * 100 > 70
+                    ? `calc(${(hoveredCluster.x / viewportWidth) * 100}% - 400px)`
+                    : `calc(${(hoveredCluster.x / viewportWidth) * 100}% + 40px)`,
+                  top: `${hoveredCluster.y - 100}px`
+                }}
               >
-                <div className={`h-1.5 w-full ${
-                  hoveredCluster.severity === 'critical' ? 'bg-rose-500' :
-                  hoveredCluster.severity === 'serious' ? 'bg-orange-500' : 'bg-amber-500'
-                }`} />
-                
+                <div className={`h-1.5 w-full ${hoveredCluster.severity === 'critical' ? 'bg-rose-500' :
+                    hoveredCluster.severity === 'serious' ? 'bg-orange-500' : 'bg-amber-500'
+                  }`} />
+
                 <div className="p-6 space-y-4">
                   <div className="flex items-start justify-between gap-4">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <span className={`text-[10px] font-black uppercase tracking-widest ${
-                          hoveredCluster.severity === 'critical' ? 'text-rose-400' : 'text-orange-400'
-                        }`}>
+                        <span className={`text-[10px] font-black uppercase tracking-widest ${hoveredCluster.severity === 'critical' ? 'text-rose-400' : 'text-orange-400'
+                          }`}>
                           {hoveredCluster.severity} Analytical Region
                         </span>
                         <span className="text-slate-600 font-bold">•</span>
                         <span className="text-[10px] font-black uppercase tracking-widest text-slate-500">
-                           {hoveredCluster.issues.length} Intersecting Violations
+                          {hoveredCluster.issues.length} Intersecting Violations
                         </span>
                       </div>
                       <h3 className="text-lg font-black text-white italic tracking-tight leading-none pt-1">
@@ -287,7 +291,7 @@ export function HeatmapOverlay({ issues, screenshot, viewportWidth = 1280 }: Hea
                   <div className="bg-slate-900/40 p-4 rounded-xl border border-white/5 space-y-3">
                     {hoveredCluster.issues.slice(0, 3).map((issue, idx) => (
                       <div key={issue.id} className="flex items-center justify-between text-[10px] font-bold">
-                        <span className="text-slate-300 truncate max-w-[300px]">{issue.title}</span>
+                        <span className="text-slate-300 truncate max-w-[200px]">{issue.title}</span>
                         <span className="text-slate-600 font-mono">#{idx + 1}</span>
                       </div>
                     ))}
@@ -303,7 +307,7 @@ export function HeatmapOverlay({ issues, screenshot, viewportWidth = 1280 }: Hea
           </AnimatePresence>
         </div>
       </div>
-      
+
       {/* Footer Info */}
       <div className="p-5 bg-slate-900/40 backdrop-blur-md border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
@@ -313,8 +317,8 @@ export function HeatmapOverlay({ issues, screenshot, viewportWidth = 1280 }: Hea
           </span>
         </div>
         <div className="flex items-center gap-4">
-           <LegendItem color="bg-rose-500/50 blur-[2px]" label="Heat Focus" />
-           <LegendItem color="bg-brand-500/20" label="Active Region" />
+          <LegendItem color="bg-rose-500/50 blur-[2px]" label="Heat Focus" />
+          <LegendItem color="bg-brand-500/20" label="Active Region" />
         </div>
       </div>
     </div>

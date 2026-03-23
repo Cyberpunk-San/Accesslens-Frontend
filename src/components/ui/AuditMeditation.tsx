@@ -77,7 +77,6 @@ export function AuditMeditation({ id, onRetry }: AuditMeditationProps) {
           </div>
         </div>
 
-        {/* HUD Decoration */}
         <div className="mt-20 pt-8 border-t border-white/5 flex justify-between items-center px-4 opacity-40">
            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-600">Adaptive Synthesis Phase</span>
            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-brand-500/50 flex items-center gap-2">

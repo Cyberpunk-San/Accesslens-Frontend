@@ -44,7 +44,7 @@ export function AuditForm({
   return (
     <div className="glass-card p-10 border-white/5 bg-slate-900/40 backdrop-blur-3xl shadow-2xl relative overflow-hidden group">
       <div className="absolute inset-0 bg-gradient-to-br from-brand-500/5 via-transparent to-brand-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-      
+
       <div className="relative z-10 flex flex-col lg:flex-row gap-6 max-w-[850px] mx-auto">
         <div className="relative flex-1 min-w-0">
           <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none text-slate-500">
@@ -83,8 +83,8 @@ export function AuditForm({
           type="button"
           onClick={() => setShowAdvanced(!showAdvanced)}
           className={`inline-flex w-fit items-center gap-3 rounded-xl border px-6 py-3 text-xs font-black uppercase tracking-widest transition-all duration-300
-            ${showAdvanced 
-              ? 'bg-brand-500/10 border-brand-500/40 text-brand-400 shadow-xl shadow-brand-500/10' 
+            ${showAdvanced
+              ? 'bg-brand-500/10 border-brand-500/40 text-brand-400 shadow-xl shadow-brand-500/10'
               : 'border-white/10 bg-white/5 text-slate-400 hover:border-brand-500/30 hover:bg-brand-500/5 hover:text-white'
             }`}
         >
@@ -99,7 +99,7 @@ export function AuditForm({
 
       <AnimatePresence>
         {showAdvanced && (
-          <motion.div 
+          <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -108,7 +108,7 @@ export function AuditForm({
             <div className="mt-8 rounded-3xl border border-white/10 bg-slate-950/60 p-8 text-left shadow-inner relative z-10">
               <label className="flex items-center gap-4 text-sm font-bold text-slate-200 cursor-pointer mb-8 group/toggle">
                 <div className={`w-12 h-6 rounded-full relative transition-colors duration-300 ${enableAI ? 'bg-brand-500' : 'bg-slate-800'}`}>
-                   <input
+                  <input
                     type="checkbox"
                     checked={enableAI}
                     onChange={(e) => setEnableAI(e.target.checked)}
@@ -129,8 +129,8 @@ export function AuditForm({
                         key={d}
                         onClick={() => setDepth(d)}
                         className={`px-3 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border transition-all
-                          ${depth === d 
-                            ? 'bg-brand-500/20 border-brand-500 text-brand-400' 
+                          ${depth === d
+                            ? 'bg-brand-500/20 border-brand-500 text-brand-400'
                             : 'border-white/5 bg-slate-900/50 text-slate-500 hover:border-white/20'
                           }`}
                       >
@@ -148,17 +148,16 @@ export function AuditForm({
                         key={engine.name}
                         type="button"
                         onClick={() => {
-                          setSelectedEngines(prev => 
-                            prev.includes(engine.name) 
+                          setSelectedEngines(prev =>
+                            prev.includes(engine.name)
                               ? prev.filter(e => e !== engine.name)
                               : [...prev, engine.name]
                           )
                         }}
-                        className={`px-3 py-1.5 rounded-lg border text-[10px] font-black uppercase tracking-widest transition-all ${
-                          selectedEngines.includes(engine.name) || (selectedEngines.length === 0 && defaultEngineIds.includes(engine.name))
-                            ? 'bg-brand-500/20 border-brand-500 text-brand-400' 
+                        className={`px-3 py-1.5 rounded-lg border text-[10px] font-black uppercase tracking-widest transition-all ${selectedEngines.includes(engine.name) || (selectedEngines.length === 0 && defaultEngineIds.includes(engine.name))
+                            ? 'bg-brand-500/20 border-brand-500 text-brand-400'
                             : 'bg-slate-900/50 border-white/5 text-slate-500 hover:border-white/20'
-                        }`}
+                          }`}
                       >
                         {engine.name.replace(/_/g, ' ')}
                       </button>

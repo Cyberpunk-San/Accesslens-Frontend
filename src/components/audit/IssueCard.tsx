@@ -46,6 +46,12 @@ export function IssueCard({ issue, group }: IssueCardProps) {
                 {Math.round(instances.reduce((acc, i) => acc + i.confidence_score, 0) / instances.length)}%
               </span>
             </div>
+            {issue.location?.selector?.includes('[shadow-root]') && (
+              <span className="px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 shadow-glow-sm shadow-purple-500/20 flex items-center gap-1.5 border-dashed">
+                <Sparkles size={10} />
+                Shadow DOM Pierced
+              </span>
+            )}
           </div>
           <h3 className="text-xl font-black text-white group-hover:text-brand-400 transition-colors leading-snug tracking-tight">{issue.title}</h3>
         </div>
