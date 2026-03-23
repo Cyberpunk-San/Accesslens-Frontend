@@ -14,8 +14,8 @@ interface IssueListProps {
 export function IssueList({ issues, summary, filter }: IssueListProps) {
   const filteredIssues = filter ? issues.filter(filter) : issues;
 
-  // Handle Error State
-  if (summary?.error || (summary?.score === 0 && issues.length === 0)) {
+  // Handle Error State (Only if no issues were found)
+  if (issues.length === 0 && (summary?.error || summary?.score === 0)) {
     return (
       <motion.div 
         initial={{ opacity: 0 }}
