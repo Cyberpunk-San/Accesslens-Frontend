@@ -47,13 +47,6 @@ export default function AuditResultsPage() {
     return <AuditLoading />;
   }
 
-  // MOCK FOR VERIFICATION
-  if (report) {
-    report.summary.error = "net::ERR_CONNECTION_REFUSED ";
-    report.issues = [];
-    report.summary.score = 0;
-  }
-
   if (isError || !report) {
     return <AuditMeditation id={id} onRetry={() => refetch()} />;
   }
