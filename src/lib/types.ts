@@ -93,6 +93,7 @@ export interface AuditSummary {
   by_wcag_level: Record<string, number>;
   score: number;
   confidence_avg: number;
+  error?: string;
   coverage_comparator?: Record<string, any>;
   contrast_patterns?: any[];
 }

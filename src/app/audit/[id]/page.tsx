@@ -47,6 +47,13 @@ export default function AuditResultsPage() {
     return <AuditLoading />;
   }
 
+  // MOCK FOR VERIFICATION
+  if (report) {
+    report.summary.error = "net::ERR_CONNECTION_REFUSED ";
+    report.issues = [];
+    report.summary.score = 0;
+  }
+
   if (isError || !report) {
     return <AuditMeditation id={id} onRetry={() => refetch()} />;
   }
@@ -179,7 +186,7 @@ export default function AuditResultsPage() {
                       </span>
                     </div>
                   </div>
-                  <IssueList issues={report.issues} />
+                  <IssueList issues={report.issues} summary={report.summary} />
                 </div>
                 <div className="space-y-12 lg:sticky lg:top-32">
                   <SeverityChart data={report.summary.by_severity} />
